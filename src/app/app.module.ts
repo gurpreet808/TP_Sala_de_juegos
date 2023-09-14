@@ -18,6 +18,7 @@ import { HomeComponent } from './componentes/home/home.component';
 import { Error404Component } from './componentes/error404/error404.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { QuienSoyComponent } from './componentes/quien-soy/quien-soy.component';
+import { NavBarComponent } from './componentes/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { QuienSoyComponent } from './componentes/quien-soy/quien-soy.component';
     HomeComponent,
     Error404Component,
     LoginComponent,
-    QuienSoyComponent
+    QuienSoyComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
