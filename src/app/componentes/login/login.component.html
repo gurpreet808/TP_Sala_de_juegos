@@ -1,1 +1,27 @@
-<p>login works!</p>
+<div id="login_container">
+    <div id="login_title">
+        Iniciar sesión
+    </div>
+    <div id="login_form">
+        <div name="login_form_input" id="nombre_container">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" [(ngModel)]="usuario.nombre"
+                [disabled]="block_ui">
+        </div>
+
+        <div name="login_form_input" id="clave_container">
+            <label for="clave">Clave</label>
+            <input type="password" id="clave" name="clave" placeholder="Ingrese su Clave" [(ngModel)]="usuario.clave"
+                [disabled]="block_ui">
+        </div>
+
+        <div id="error_container">
+            {{error}}
+        </div>
+
+        <div id="login_btn_container">
+            <button name="login_btns" id="login_btn" (click)="login()" [disabled]="block_ui">Iniciar sesión</button>
+            <button name="login_btns" id="btn_registrar" routerLink="/registrar-usuario">Registrarse</button>
+        </div>
+    </div>
+</div>
