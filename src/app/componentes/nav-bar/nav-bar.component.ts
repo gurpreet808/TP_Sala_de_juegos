@@ -7,4 +7,22 @@ import { Component } from '@angular/core';
 })
 export class NavBarComponent {
 
+  items = [
+    {
+      label: 'Home',
+      icon: 'fa-solid fa-house',
+      routerLink: '/'
+    },
+    {
+      label: 'Login',
+      icon: 'fa-solid fa-arrow-right-to-bracket',
+      routerLink: '/login'
+    },
+    {
+      label: 'Quién Soy',
+      icon: 'fa-regular fa-lightbulb',
+      routerLink: '/quien-soy'
+    }
+  ];
+
 }
