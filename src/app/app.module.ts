@@ -14,10 +14,18 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { HomeComponent } from './componentes/home/home.component';
+import { Error404Component } from './componentes/error404/error404.component';
+import { LoginComponent } from './componentes/login/login.component';
+import { QuienSoyComponent } from './componentes/quien-soy/quien-soy.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    Error404Component,
+    LoginComponent,
+    QuienSoyComponent
   ],
   imports: [
     BrowserModule,
