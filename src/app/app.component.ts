@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UsuarioService } from './servicios/usuario.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'TP_Sala_de_juegos';
+
+  constructor(public servUsuario: UsuarioService){
+    
+  }
 }

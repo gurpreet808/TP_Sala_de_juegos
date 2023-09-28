@@ -14,11 +14,6 @@ export class NavBarComponent {
       routerLink: '/'
     },
     {
-      label: 'Login',
-      icon: 'fa-solid fa-arrow-right-to-bracket',
-      routerLink: '/login'
-    },
-    {
       label: 'Quién Soy',
       icon: 'fa-regular fa-lightbulb',
       routerLink: '/quien-soy'

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { Usuario } from 'src/app/clases/usuario';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -8,45 +10,47 @@ import { Usuario } from 'src/app/clases/usuario';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  usuario: Usuario = new Usuario("", "");
-  error: string = "";
-  block_ui: boolean = false;
+  email: string = "";
+  clave: string = "";
 
-  constructor(private router: Router) {
-    Usuario.TraerDatosLocalStorage();
-    if (Usuario.usuarioLogueado != null) {
+  constructor(public servUsuario: UsuarioService, private router: Router, public messageService: MessageService) {
+    if (servUsuario.logueado == true) {
       this.router.navigate(['/']);
     }
   }
 
-  login() {
-    this.block_ui = true;
-    this.error = "";
-    //console.log("login form", this.usuario);
-
-    try {
-      if (this.usuario.nombre == "" || this.usuario.clave == "") {
-        throw new Error("Debe completar el usuario y la clave");
+  Login() {
+    console.log("login");
+    this.servUsuario.LogInEmail(this.email, this.clave).then(
+      (res) => {
+        console.log(res);
+        this.messageService.add({ severity: 'success', life: 10000, summary: 'Bienvenido', detail: "Iniciaste sesión" });
+        this.router.navigate(['/']);
       }
-
-      if (Usuario.LogIn(this.usuario)) {
-        this.error = "Usuario logueado correctamente. Será redirigido en 5 segundos...";
-
-        let cuentaregresiva: number = 5;
-        let miIntervalo = setInterval(() => {
-          if (cuentaregresiva <= 0) {
-            clearInterval(miIntervalo);
-            this.router.navigateByUrl('/');
-          } else {
-            this.error = `Usuario logueado correctamente. Será redirigido en ${cuentaregresiva} segundos...`;
-            cuentaregresiva--;
-          }
-        }, 1000); // Update the countdown every 1 second (1000 milliseconds)
+    ).catch(
+      (err) => {
+        console.log(err.message);
+        this.messageService.add({ severity: 'error', life: 10000, summary: 'Error', detail: err.message });
       }
-    } catch (error: any) {
-      console.log(error.message);
-      this.error = error.message;
-      this.block_ui = false;
-    }
+    );
+  }
+
+  Registrarme() {
+    this.router.navigate(['/registro']);
+  }
+
+  OlvideClave() {
+    console.log("olvide clave");
+    this.servUsuario.OlvideClave(this.email).then(
+      (res) => {
+        console.log(res);
+        this.messageService.add({ severity: 'success', life: 10000, summary: 'Listo', detail: "Se envió un correo a " + this.email + " para que puedas recuperar tu contraseña. Revisa SPAM por las dudas." });
+      }
+    ).catch(
+      (err) => {
+        console.log(err);
+        this.messageService.add({ severity: 'error', life: 10000, summary: 'Error', detail: err.message });
+      }
+    );
   }
 }

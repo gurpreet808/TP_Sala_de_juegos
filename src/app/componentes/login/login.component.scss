@@ -1,70 +1,32 @@
 div#login_container {
     background-color: #fff;
     border: 1px solid #ccc;
-    padding : 20px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
     margin-bottom: 20px;
-    width: 50%;
+    width: 25rem;
     margin-left: auto;
     margin-right: auto;
+}
+
+div#login_form_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+div#login_title_container {
     text-align: center;
 }
 
-div#login_title {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 20px;
+div[name="login_form_input"]>label {
+    font-weight: 500;
 }
 
-div#login_form {
+div#login_buttons_container {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-div#error_container {
-    color: #f44336;
-    font-size: 0.8rem;
-}
-
-div[name="login_form_input"]>label {
-    margin-right: 0.5rem;
-}
-
-div#login_btn_container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
-    margin-top: 15px;
-}
-
-button[name="login_btns"] {
-    padding: 0.3rem;
-    border-radius: 0.5rem;
-    border: 1px solid black;
-    font-weight: bold;
-    font-size: 0.9rem;
-    cursor: pointer;
-    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 2px 4px -1px rgba(0, 0, 0, 0.2);
-}
-
-button#login_btn {
-    background-color: #49bcf3;
-
-    &:hover {
-        background-color: #3a9ad9;
-    }
-}
-
-button#btn_registrar {
-    background-color: #a3a3a3;
-
-    &:hover {
-        background-color: #8c8c8c;
-    }
+    gap: 0.25rem;
 }

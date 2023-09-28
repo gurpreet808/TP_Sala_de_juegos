@@ -1,5 +1,7 @@
 <div id="app_container">
-    <div id="nav_bar">
+    <p-toast [style]="{marginTop: '10px'}" [preventOpenDuplicates]="true"></p-toast>
+    
+    <div id="nav_bar" *ngIf="servUsuario.logueado">
         <app-nav-bar></app-nav-bar>
     </div>
 

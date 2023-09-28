@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/clases/usuario';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
 
 @Component({
   selector: 'app-home',
@@ -10,19 +10,14 @@ import { Usuario } from 'src/app/clases/usuario';
 export class HomeComponent {
   nom_usuario: string = '';
 
-  constructor(private router: Router) {
-    Usuario.TraerDatosLocalStorage();
-
-    if (Usuario.usuarioLogueado != null) {
-      this.nom_usuario = ' ' + Usuario.usuarioLogueado.nombre;
-    } else {
+  constructor(public servUsuario: UsuarioService, private router: Router) {
+    if (servUsuario.logueado == false) {
       this.router.navigateByUrl('/login');
     }
   }
 
   desloguear() {
-    Usuario.usuarioLogueado = null;
-    localStorage.setItem("usuarioLogueado", JSON.stringify(Usuario.usuarioLogueado));
+    this.servUsuario.LogOut();
     this.router.navigateByUrl('/login');
   }
 }

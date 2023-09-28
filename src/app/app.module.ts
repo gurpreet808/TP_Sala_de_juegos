@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,6 +28,8 @@ import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import { PasswordModule } from 'primeng/password';
+import { MessageService } from 'primeng/api';
 
 import { HomeComponent } from './componentes/home/home.component';
 import { Error404Component } from './componentes/error404/error404.component';
@@ -47,6 +50,8 @@ import { NavBarComponent } from './componentes/nav-bar/nav-bar.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HammerModule,
+    BrowserAnimationsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
@@ -65,11 +70,14 @@ import { NavBarComponent } from './componentes/nav-bar/nav-bar.component';
     InputTextareaModule,
     CardModule,
     DropdownModule,
+    PasswordModule,
     MessagesModule,
     MessageModule
   ],
   providers: [
-    ScreenTrackingService, UserTrackingService
+    ScreenTrackingService,
+    UserTrackingService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
