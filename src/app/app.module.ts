@@ -36,6 +36,7 @@ import { Error404Component } from './componentes/error404/error404.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { QuienSoyComponent } from './componentes/quien-soy/quien-soy.component';
 import { NavBarComponent } from './componentes/nav-bar/nav-bar.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { NavBarComponent } from './componentes/nav-bar/nav-bar.component';
     Error404Component,
     LoginComponent,
     QuienSoyComponent,
-    NavBarComponent
+    NavBarComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,

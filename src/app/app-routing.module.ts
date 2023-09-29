@@ -4,12 +4,13 @@ import { LoginComponent } from './componentes/login/login.component';
 import { Error404Component } from './componentes/error404/error404.component';
 import { QuienSoyComponent } from './componentes/quien-soy/quien-soy.component';
 import { HomeComponent } from './componentes/home/home.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
 
 const routes: Routes = [
   //{ path: "", redirectTo: "/bienvenido", pathMatch: "full" },
   { path: "", component: HomeComponent },
   { path: "login", component: LoginComponent },
-  //{ path: "registrar-usuario", component: RegistrarUsuarioComponent },
+  { path: "registro", component: RegistroComponent },
   { path: "quien-soy", component: QuienSoyComponent },
   { path: "**", component: Error404Component }
 ];

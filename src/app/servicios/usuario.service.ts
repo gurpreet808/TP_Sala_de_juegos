@@ -39,26 +39,18 @@ export class UsuarioService {
     return this.auth.signOut();
   }
 
-  async RegistrarEmail(email: string, password: string): Promise<{ estado: boolean; info?: string }> {
-    let rta: { estado: boolean; info?: string } = { estado: false };
-
-    await createUserWithEmailAndPassword(this.auth, email, password)
-      .then(
-        (datos) => {
-          //console.log(datos);
-          rta.estado = true;
-        }
-      )
-      .catch(
-        (error) => {
-          console.log(error.code);
-
-          rta.info = this.errorParser(error.code);
-          rta.estado = false;
-        }
-      );
-
-    return Promise.resolve(rta);
+  async RegistrarEmail(email: string, password: string) {
+    await createUserWithEmailAndPassword(this.auth, email, password).then(
+      (datos) => {
+        //console.log(datos);
+        return Promise.resolve(datos);
+      }
+    ).catch(
+      (error) => {
+        //console.log(error.code);
+        throw new Error(this.errorParser(error.code));
+      }
+    );
   }
 
   async OlvideClave(email: string) {
@@ -69,7 +61,7 @@ export class UsuarioService {
       }
     ).catch(
       (error) => {
-        console.log(error.code);
+        //console.log(error.code);
         throw new Error(this.errorParser(error.code));
       }
     );
