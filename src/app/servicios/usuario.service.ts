@@ -1,6 +1,6 @@
-import { Injectable, inject } from '@angular/core';
-import { Auth, UserCredential, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword } from '@angular/fire/auth';
-import { firstValueFrom } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Auth, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Usuario } from '../clases/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +8,15 @@ import { firstValueFrom } from 'rxjs';
 export class UsuarioService {
 
   logueado: boolean = false;
+  usuarioActual: Usuario = new Usuario("", "");
 
   constructor(private auth: Auth) {
     this.auth.onAuthStateChanged(
       (user) => {
         if (user) {
           this.logueado = true;
+          //console.log(user);
+          this.usuarioActual = new Usuario("", user.email ?? "nomail");
         } else {
           this.logueado = false;
         }

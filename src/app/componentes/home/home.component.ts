@@ -13,6 +13,8 @@ export class HomeComponent {
   constructor(public servUsuario: UsuarioService, private router: Router) {
     if (servUsuario.logueado == false) {
       this.router.navigateByUrl('/login');
+    } else {
+      this.nom_usuario = " " + servUsuario.usuarioActual.email;
     }
   }
 
