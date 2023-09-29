@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -20,4 +22,10 @@ export class NavBarComponent {
     }
   ];
 
+  constructor(public servUsuario: UsuarioService, private router: Router) { }
+
+  Desloguear() {
+    this.servUsuario.LogOut();
+    this.router.navigateByUrl('/login');
+  }
 }

@@ -17,9 +17,4 @@ export class HomeComponent {
       this.nom_usuario = " " + servUsuario.usuarioActual.email;
     }
   }
-
-  desloguear() {
-    this.servUsuario.LogOut();
-    this.router.navigateByUrl('/login');
-  }
 }
