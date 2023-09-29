@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Usuario } from 'src/app/clases/usuario';
@@ -9,21 +9,31 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   email: string = "";
   clave: string = "";
 
+  jugadoresMock = [
+    { mail: "jugador1@jugador1.com", clave: "jugador1" },
+    { mail: "jugador2@jugador2.com", clave: "jugador2" },
+    { mail: "jugador3@jugador3.com", clave: "jugador3" }
+  ]
+
   constructor(public servUsuario: UsuarioService, private router: Router, public messageService: MessageService) {
-    if (servUsuario.logueado == true) {
+    console.log(servUsuario.logueado);
+  }
+
+  ngOnInit(): void {
+    if (this.servUsuario.logueado == true) {
       this.router.navigate(['/']);
     }
   }
 
   Login() {
-    console.log("login");
+    //console.log("login");
     this.servUsuario.LogInEmail(this.email, this.clave).then(
       (res) => {
-        console.log(res);
+        //console.log(res);
         this.messageService.add({ severity: 'success', life: 10000, summary: 'Bienvenido', detail: "Iniciaste sesión" });
         this.router.navigate(['/']);
       }
@@ -52,5 +62,10 @@ export class LoginComponent {
         this.messageService.add({ severity: 'error', life: 10000, summary: 'Error', detail: err.message });
       }
     );
+  }
+
+  LoginMock(mail: string, clave: string) {
+    this.email = mail;
+    this.clave = clave;
   }
 }

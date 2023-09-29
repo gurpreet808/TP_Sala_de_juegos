@@ -20,7 +20,7 @@ export class RegistroComponent {
   }
 
   Registrarme() {
-    console.log("regisrarme");
+    //console.log("regisrarme");
 
     if (this.clave != this.clave2) {
       this.messageService.add({ severity: 'error', life: 10000, summary: 'Error', detail: "Las contraseñas no coinciden" });
@@ -29,8 +29,8 @@ export class RegistroComponent {
 
     this.servUsuario.RegistrarEmail(this.email, this.clave).then(
       (res) => {
-        console.log(res);
-        this.messageService.add({ severity: 'success', life: 10000, summary: 'Bienvenido', detail: "Iniciaste sesión" });
+        //console.log(res);
+        this.messageService.add({ severity: 'success', life: 10000, summary: 'Listo', detail: "Se creó tu cuenta con el correo: " + this.email + "." });
         this.router.navigate(['/']);
       }
     ).catch(
@@ -60,4 +60,5 @@ export class RegistroComponent {
       }
     );
   }
+
 }

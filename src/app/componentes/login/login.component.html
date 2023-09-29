@@ -26,4 +26,11 @@
         </div>
 
     </div>
+
+    <div id="login_mockbuttons_container">
+        <div *ngFor="let jugador of jugadoresMock">
+            <button pButton pRipple label="{{jugador.mail}}" class="p-button-help w-full"
+                (click)="LoginMock(jugador.mail, jugador.clave)"></button>
+        </div>
+    </div>
 </div>
