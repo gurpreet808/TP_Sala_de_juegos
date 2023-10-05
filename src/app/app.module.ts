@@ -37,6 +37,9 @@ import { LoginComponent } from './componentes/login/login.component';
 import { QuienSoyComponent } from './componentes/quien-soy/quien-soy.component';
 import { NavBarComponent } from './componentes/nav-bar/nav-bar.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
+import { SalaChatComponent } from './componentes/sala-chat/sala-chat.component';
+import { AhorcadoComponent } from './componentes/ahorcado/ahorcado.component';
+import { MayorMenorComponent } from './componentes/mayor-menor/mayor-menor.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { RegistroComponent } from './componentes/registro/registro.component';
     LoginComponent,
     QuienSoyComponent,
     NavBarComponent,
-    RegistroComponent
+    RegistroComponent,
+    SalaChatComponent,
+    AhorcadoComponent,
+    MayorMenorComponent
   ],
   imports: [
     BrowserModule,

@@ -19,6 +19,25 @@ export class NavBarComponent {
       label: 'Quién Soy',
       icon: 'fa-regular fa-lightbulb',
       routerLink: '/quien-soy'
+    },
+    {
+      label: 'Juegos',
+      icon: 'fas fa-gamepad',
+      items: [
+        {
+          label: 'Ahorcado',
+          routerLink: '/ahorcado'
+        },
+        {
+          label: 'Mayor o Menor',
+          routerLink: '/mayor-menor'
+        },
+      ]
+    },
+    {
+      label: 'Sala de Chat',
+      icon: 'far fa-comments',
+      routerLink: '/sala-chat'
     }
   ];
 

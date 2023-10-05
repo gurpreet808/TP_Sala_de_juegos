@@ -5,6 +5,9 @@ import { Error404Component } from './componentes/error404/error404.component';
 import { QuienSoyComponent } from './componentes/quien-soy/quien-soy.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
+import { SalaChatComponent } from './componentes/sala-chat/sala-chat.component';
+import { AhorcadoComponent } from './componentes/ahorcado/ahorcado.component';
+import { MayorMenorComponent } from './componentes/mayor-menor/mayor-menor.component';
 
 const routes: Routes = [
   //{ path: "", redirectTo: "/bienvenido", pathMatch: "full" },
@@ -12,6 +15,9 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "registro", component: RegistroComponent },
   { path: "quien-soy", component: QuienSoyComponent },
+  { path: "sala-chat", component: SalaChatComponent },
+  { path: "ahorcado", component: AhorcadoComponent },
+  { path: "mayor-menor", component: MayorMenorComponent },
   { path: "**", component: Error404Component }
 ];
 

@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   ]
 
   constructor(public servUsuario: UsuarioService, private router: Router, public messageService: MessageService) {
-    console.log(servUsuario.logueado);
+    //console.log(servUsuario.logueado);
   }
 
   ngOnInit(): void {
