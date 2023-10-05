@@ -1,1 +1,19 @@
-<p>ahorcado works!</p>
+<div class="ahorcado_container">
+    <h1>Ahorcado</h1>
+    
+    <div class="palabra">
+        {{ palabra_oculta }}
+    </div>
+    
+    <div class="intentos">
+        <p>Intentos restantes: {{ intentos_restantes }}</p>
+    </div>
+    
+    <div class="letras" *ngIf="!finalizado">
+        <button *ngFor="let letra of letras" (click)="ElegirLetra(letra)">{{ letra }}</button>
+    </div>
+
+    <div *ngIf="finalizado">
+        <button (click)="ResetJuego()">Reset</button>
+    </div>
+</div>
