@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class MensajeService {
   private dbPath = '/mensajes';
-  mensajesRef: AngularFirestoreCollection<Mensaje> = this.db.collection(this.dbPath);
+  mensajesRef: AngularFirestoreCollection<Mensaje> = this.db.collection<Mensaje>(this.dbPath, ref => ref.orderBy('fecha', 'asc'));
   mensajes: Mensaje[] = [];
 
   constructor(private db: AngularFirestore) {
@@ -18,16 +18,11 @@ export class MensajeService {
           msj[x].fecha = new Date((msj[x].fecha as any)['seconds'] * 1000);
         }
 
-        msj.sort(
-          (a, b) => {
-            return (a.fecha as any) - (b.fecha as any);
-          }
-        );
-
         this.mensajes = msj;
         console.log(this.mensajes);
       }
     );
+
   }
 
   getAll(): Observable<Mensaje[]> {

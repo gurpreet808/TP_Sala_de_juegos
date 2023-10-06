@@ -35,6 +35,7 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { SalaChatComponent } from './componentes/sala-chat/sala-chat.component';
 import { AhorcadoComponent } from './componentes/ahorcado/ahorcado.component';
 import { MayorMenorComponent } from './componentes/mayor-menor/mayor-menor.component';
+import { AutorPropioPipe } from './pipes/autor-propio.pipe';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { MayorMenorComponent } from './componentes/mayor-menor/mayor-menor.compo
     RegistroComponent,
     SalaChatComponent,
     AhorcadoComponent,
-    MayorMenorComponent
+    MayorMenorComponent,
+    AutorPropioPipe
   ],
   imports: [
     BrowserModule,

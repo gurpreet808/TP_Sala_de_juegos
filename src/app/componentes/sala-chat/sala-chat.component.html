@@ -1,15 +1,20 @@
 <div id="sala-chat-container">
     <div id="mensajes">
-        <div *ngFor="let mensaje of servMensaje.mensajes">
-            <div>
+        <div *ngFor="let mensaje of servMensaje.mensajes" name="mensaje-card" [class.mensaje-propio]="mensaje.nombre === servUsuario.usuarioActual.email">
+            <div name="mensaje-autor">
+                {{mensaje.nombre | autorPropio: servUsuario.usuarioActual}}
+            </div>
+            <div name="mensaje-texto">
                 {{mensaje.mensaje}}
             </div>
-            <div>{{mensaje.nombre}} - {{mensaje.fecha | date:'HH:mm dd-MM-yyyy'}}</div>
+            <div name="mensaje-fecha">
+                {{mensaje.fecha | date:'dd/MM/yyyy HH:mm'}}
+            </div>
         </div>
     </div>
-    
+
     <div id="enviar-mensaje">
         <input type="text" [(ngModel)]="mensaje.mensaje" />
-        <button (click)="enviarMensaje()">Enviar</button>
+        <button pButton icon="fa-regular fa-paper-plane" (click)="enviarMensaje()"></button>
     </div>
 </div>

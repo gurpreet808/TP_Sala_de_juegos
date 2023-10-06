@@ -26,6 +26,7 @@ export class SalaChatComponent {
     this.mensaje.fecha = new Date();
     this.mensaje.nombre = this.servUsuario.usuarioActual.email;
     this.servMensaje.create(this.mensaje);
+    this.mensaje.mensaje = '';
   }
 
 }
