@@ -1,1 +1,15 @@
-<p>sala-chat works!</p>
+<div id="sala-chat-container">
+    <div id="mensajes">
+        <div *ngFor="let mensaje of servMensaje.mensajes">
+            <div>
+                {{mensaje.mensaje}}
+            </div>
+            <div>{{mensaje.nombre}} - {{mensaje.fecha | date:'HH:mm dd-MM-yyyy'}}</div>
+        </div>
+    </div>
+    
+    <div id="enviar-mensaje">
+        <input type="text" [(ngModel)]="mensaje.mensaje" />
+        <button (click)="enviarMensaje()">Enviar</button>
+    </div>
+</div>
