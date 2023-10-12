@@ -1,21 +1,26 @@
-<div class="juego-cartas">
-    <h1>Mayor o menor</h1>
-    <div class="carta-actual">
-        <div class="carta" *ngIf="cartaActual !== undefined">{{ cartaActual }}</div>
+<div id="mayormenor_container">
+    <h1 id="mayormenor_title">Mayor o menor</h1>
+
+    <div id="mayormenor_carta" *ngIf="cartaActual !== undefined">
+        {{ cartaActual }}
     </div>
-    <div class="puntos">
-        <p>Puntos: {{ puntos }}</p>
+
+    <div id="mayormenor_puntos">
+        Puntos: {{ puntos }}
     </div>
-    <div class="cartas-restantes">
-        <p>Cartas restantes en el mazo: {{ cartasRestantes }}</p>
+    
+    <div id="mayormenor_cartas_restantes">
+        Cartas restantes en el mazo: {{ cartasRestantes }}
     </div>
-    <div class="adivinanza">
-        <button (click)="verificarAdivinanza(true)"
+    
+    <div id="mayormenor_button_container">
+        <button pButton pRipple class="p-button-success" (click)="verificarAdivinanza(true)"
             [disabled]="juegoTerminado || cartaActual === undefined">Mayor</button>
-        <button (click)="verificarAdivinanza(false)"
+        <button pButton pRipple class="p-button-danger" (click)="verificarAdivinanza(false)"
             [disabled]="juegoTerminado || cartaActual === undefined">Menor</button>
     </div>
-    <div class="reiniciar">
-        <button (click)="reiniciarJuego()" *ngIf="juegoTerminado">Volver a jugar</button>
+    
+    <div id="mayormenor_reiniciar_container">
+        <button pButton pRipple class="p-button-primary" (click)="reiniciarJuego()" *ngIf="juegoTerminado">Volver a jugar</button>
     </div>
 </div>
