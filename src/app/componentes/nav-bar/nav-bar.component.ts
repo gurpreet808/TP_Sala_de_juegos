@@ -36,6 +36,10 @@ export class NavBarComponent {
           label: 'Preguntados',
           routerLink: '/preguntados'
         },
+        {
+          label: 'Color Race',
+          routerLink: '/color-race'
+        },
       ]
     },
     {

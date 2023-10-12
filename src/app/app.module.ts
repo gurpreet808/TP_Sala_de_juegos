@@ -38,6 +38,7 @@ import { MayorMenorComponent } from './componentes/mayor-menor/mayor-menor.compo
 import { AutorPropioPipe } from './pipes/autor-propio.pipe';
 import { PreguntadosComponent } from './componentes/preguntados/preguntados.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ColorRaceComponent } from './componentes/color-race/color-race.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { HttpClientModule } from '@angular/common/http';
     AhorcadoComponent,
     MayorMenorComponent,
     AutorPropioPipe,
-    PreguntadosComponent
+    PreguntadosComponent,
+    ColorRaceComponent
   ],
   imports: [
     BrowserModule,

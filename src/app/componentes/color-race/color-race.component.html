@@ -1,0 +1,22 @@
+<div>
+    <h1>Adivina el color</h1>
+
+    <div id="color_texto" [style.color]="colores[colorFondo].fondo" *ngIf="colorNombre !== -1 && colorFondo !== -1">
+        {{ colores[colorNombre].nombre }}
+    </div>
+
+    <div *ngIf="tiempoRestante > 0">Tiempo restante: {{ tiempoRestante }} segundos</div>
+
+    <div *ngIf="!juegoFinalizado">
+        <button pButton pRipple class="p-button-success" (click)="verificarRespuesta(true)">Sí</button>
+        <button pButton pRipple class="p-button-danger" (click)="verificarRespuesta(false)">No</button>
+    </div>
+
+    <div>
+        <p>Puntaje: {{ puntaje }}</p>
+    </div>
+
+    <div>
+        <button pButton pRipple class="p-button-primary" *ngIf="juegoFinalizado" (click)="reiniciarJuego()">Reiniciar</button>
+    </div>
+</div>
