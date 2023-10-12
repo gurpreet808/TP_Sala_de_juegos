@@ -32,6 +32,10 @@ export class NavBarComponent {
           label: 'Mayor o Menor',
           routerLink: '/mayor-menor'
         },
+        {
+          label: 'Preguntados',
+          routerLink: '/preguntados'
+        },
       ]
     },
     {

@@ -1,0 +1,24 @@
+<div id="preguntados_container">
+    <h1 id="preguntados_title">Preguntados</h1>
+
+    <div id="preguntados_juego_container" *ngIf="idPaisElegido != -1">
+        <div id="preguntados_img_container">
+            <img id="preguntados_img" [src]="servPaises.paises[idPaisElegido].url_foto" alt="">
+            <!-- <div>{{servPaises.paises[idPaisElegido].nombre}}</div> -->
+        </div>
+
+        <div id="preguntados_panel_container" *ngIf="!juegoFinalizado">
+            <div id="preguntados_pregunta">¿De qué país es esta bandera?</div>
+
+            <div *ngFor="let p of opcionesPaises">
+                <button pButton pButton pRipple class="p-button-secondary w-full" [label]="servPaises.paises[p].nombre" (click)="ElegirOpcion(p)"
+                    [disabled]="juegoFinalizado"></button>
+            </div>
+        </div>
+
+        <div id="preguntados_reiniciar_container" *ngIf="juegoFinalizado">
+            <button pButton pRipple class="p-button-primary w-full" label="Reiniciar juego"
+                (click)="ReiniciarJuego()"></button>
+        </div>
+    </div>
+</div>

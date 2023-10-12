@@ -8,6 +8,7 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { SalaChatComponent } from './componentes/sala-chat/sala-chat.component';
 import { AhorcadoComponent } from './componentes/ahorcado/ahorcado.component';
 import { MayorMenorComponent } from './componentes/mayor-menor/mayor-menor.component';
+import { PreguntadosComponent } from './componentes/preguntados/preguntados.component';
 
 const routes: Routes = [
   //{ path: "", redirectTo: "/bienvenido", pathMatch: "full" },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: "sala-chat", component: SalaChatComponent },
   { path: "ahorcado", component: AhorcadoComponent },
   { path: "mayor-menor", component: MayorMenorComponent },
+  { path: "preguntados", component: PreguntadosComponent },
   { path: "**", component: Error404Component }
 ];
 

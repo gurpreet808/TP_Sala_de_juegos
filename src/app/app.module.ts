@@ -36,6 +36,8 @@ import { SalaChatComponent } from './componentes/sala-chat/sala-chat.component';
 import { AhorcadoComponent } from './componentes/ahorcado/ahorcado.component';
 import { MayorMenorComponent } from './componentes/mayor-menor/mayor-menor.component';
 import { AutorPropioPipe } from './pipes/autor-propio.pipe';
+import { PreguntadosComponent } from './componentes/preguntados/preguntados.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { AutorPropioPipe } from './pipes/autor-propio.pipe';
     SalaChatComponent,
     AhorcadoComponent,
     MayorMenorComponent,
-    AutorPropioPipe
+    AutorPropioPipe,
+    PreguntadosComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +60,7 @@ import { AutorPropioPipe } from './pipes/autor-propio.pipe';
     FormsModule,
     HammerModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     AngularFireModule.initializeApp(environment.firebase),
