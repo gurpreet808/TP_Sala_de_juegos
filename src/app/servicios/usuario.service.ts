@@ -16,7 +16,6 @@ export class UsuarioService {
       (user) => {
         if (user) {
           this.logueado.next(true);
-          //console.log(user);
           this.usuarioActual = new Usuario("", user.email ?? "nomail");
         } else {
           this.logueado.next(false);
