@@ -11,10 +11,15 @@ export class HomeComponent {
   nom_usuario: string = '';
 
   constructor(public servUsuario: UsuarioService, private router: Router) {
-    if (servUsuario.logueado == false) {
-      this.router.navigateByUrl('/login');
+    this.logueado();
+  }
+
+  async logueado() {
+    await this.servUsuario.waitForAuthState();
+    if (this.servUsuario.logueado.value == false) {
+      this.router.navigate(['/login']);
     } else {
-      this.nom_usuario = " " + servUsuario.usuarioActual.email;
+      this.nom_usuario = " " + this.servUsuario.usuarioActual.email;
     }
   }
 }

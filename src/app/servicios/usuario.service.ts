@@ -1,25 +1,40 @@
 import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Usuario } from '../clases/usuario';
+import { BehaviorSubject, firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  logueado: boolean = false;
+  logueado: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   usuarioActual: Usuario = new Usuario("", "");
 
   constructor(private auth: Auth) {
     this.auth.onAuthStateChanged(
       (user) => {
         if (user) {
-          this.logueado = true;
-          //console.log(user);
+          this.logueado.next(true);
+          console.log(user);
           this.usuarioActual = new Usuario("", user.email ?? "nomail");
         } else {
-          this.logueado = false;
+          this.logueado.next(false);
         }
+      }
+    );
+  }
+
+  async waitForAuthState(): Promise<boolean> {
+    return new Promise<boolean>(
+      (resolve) => {
+        this.logueado.subscribe(
+          (isLoggedIn: boolean) => {
+            if (isLoggedIn) {
+              resolve(true);
+            }
+          }
+        );
       }
     );
   }
@@ -39,7 +54,7 @@ export class UsuarioService {
   }
 
   async LogOut() {
-    this.logueado = false;
+    this.logueado.next(false);
     return this.auth.signOut();
   }
 

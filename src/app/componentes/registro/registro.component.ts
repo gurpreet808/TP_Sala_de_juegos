@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
@@ -8,13 +8,22 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.scss']
 })
-export class RegistroComponent {
+export class RegistroComponent implements OnInit {
   email: string = "";
   clave: string = "";
   clave2: string = "";
 
   constructor(public servUsuario: UsuarioService, private router: Router, public messageService: MessageService) {
-    if (servUsuario.logueado == true) {
+
+  }
+
+  ngOnInit(): void {
+    this.logueado();
+  }
+
+  async logueado() {
+    await this.servUsuario.waitForAuthState();
+    if (this.servUsuario.logueado.value) {
       this.router.navigate(['/']);
     }
   }
