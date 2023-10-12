@@ -17,6 +17,9 @@
         </div>
 
         <div id="preguntados_reiniciar_container" *ngIf="juegoFinalizado">
+            <div *ngIf="gano">Acertaste! :)</div>
+            <div *ngIf="!gano">Fallaste! :(</div>
+
             <button pButton pRipple class="p-button-primary w-full" label="Reiniciar juego"
                 (click)="ReiniciarJuego()"></button>
         </div>

@@ -13,6 +13,7 @@ export class PreguntadosComponent implements OnInit {
   idPaisElegido: number = -1;
   opcionesPaises: number[] = [];
   juegoFinalizado: boolean = false;
+  gano: boolean = false;
 
   constructor(public servPaises: PaisService, public messageService: MessageService) {
   }
@@ -23,6 +24,7 @@ export class PreguntadosComponent implements OnInit {
 
   async IniciarJuego() {
     this.juegoFinalizado = false;
+    this.gano = false;
     await this.servPaises.CargarPaises().then(
       (paises: Pais[]) => {
         this.ElegirPaisAleatorio();
@@ -58,8 +60,10 @@ export class PreguntadosComponent implements OnInit {
 
   ElegirOpcion(idPais: number) {
     if (idPais == this.idPaisElegido) {
+      this.gano = true;
       this.messageService.add({ severity: 'success', summary: 'Correcto', detail: 'Ganaste' });
     } else {
+      this.gano = false;
       this.messageService.add({ severity: 'error', summary: 'Incorrecto', detail: 'Perdiste' });
     }
 
