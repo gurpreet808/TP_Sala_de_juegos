@@ -11,7 +11,7 @@ export class ColorRaceComponent implements OnInit {
   puntaje: number = 0;
   colorNombre: number = -1;
   colorFondo: number = -1;
-  juegoFinalizado: boolean = false;
+  juegoFinalizado: boolean = true;
   colores: Color[] = [
     { nombre: 'Rojo', fondo: '#FF0000' },
     { nombre: 'Verde', fondo: '#00FF00' },
@@ -24,7 +24,7 @@ export class ColorRaceComponent implements OnInit {
   ];
 
   constructor() {
-    this.iniciarJuego();
+    //this.iniciarJuego();
   }
 
   ngOnInit() {
