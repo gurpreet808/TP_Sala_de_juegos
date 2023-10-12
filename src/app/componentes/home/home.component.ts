@@ -15,7 +15,6 @@ export class HomeComponent {
   }
 
   async logueado() {
-    await this.servUsuario.waitForAuthState();
     if (this.servUsuario.logueado.value == false) {
       this.router.navigate(['/login']);
     } else {
