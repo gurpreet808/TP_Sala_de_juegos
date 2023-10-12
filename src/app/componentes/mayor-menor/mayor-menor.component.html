@@ -1,1 +1,21 @@
-<p>mayor-menor works!</p>
+<div class="juego-cartas">
+    <h1>Mayor o menor</h1>
+    <div class="carta-actual">
+        <div class="carta" *ngIf="cartaActual !== undefined">{{ cartaActual }}</div>
+    </div>
+    <div class="puntos">
+        <p>Puntos: {{ puntos }}</p>
+    </div>
+    <div class="cartas-restantes">
+        <p>Cartas restantes en el mazo: {{ cartasRestantes }}</p>
+    </div>
+    <div class="adivinanza">
+        <button (click)="verificarAdivinanza(true)"
+            [disabled]="juegoTerminado || cartaActual === undefined">Mayor</button>
+        <button (click)="verificarAdivinanza(false)"
+            [disabled]="juegoTerminado || cartaActual === undefined">Menor</button>
+    </div>
+    <div class="reiniciar">
+        <button (click)="reiniciarJuego()" *ngIf="juegoTerminado">Volver a jugar</button>
+    </div>
+</div>
