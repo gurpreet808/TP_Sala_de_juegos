@@ -19,7 +19,7 @@ export class MensajeService {
         }
 
         this.mensajes = msj;
-        console.log(this.mensajes);
+        //console.log(this.mensajes);
       }
     );
 

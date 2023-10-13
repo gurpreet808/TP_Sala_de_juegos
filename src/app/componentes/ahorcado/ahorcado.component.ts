@@ -30,7 +30,7 @@ export class AhorcadoComponent {
 
   async PalabraAlAzar() {
     this.palabra_a_adivinar = this.palabras[Math.floor(Math.random() * this.palabras.length)].toUpperCase();
-    console.log(this.palabra_a_adivinar);
+    //console.log(this.palabra_a_adivinar);
 
     this.palabra_oculta = '_'.repeat(this.palabra_a_adivinar.length);
   }
