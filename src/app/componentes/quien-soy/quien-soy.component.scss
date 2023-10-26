@@ -1,25 +1,26 @@
 /* quien-soy.component.scss */
 div#quien_soy_container{
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;    
+    //justify-content: center;    
     align-items: center;
     gap: 0.5rem;
 }
 
 
 div#quien_soy_card {
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     align-items: center;
-    padding: 1.5rem;
+    padding: 1rem;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 50%;
-    /* Ajusta el ancho de la tarjeta según tus preferencias */
-    background-color: #fff;
+    width: 90vw;
+    background-color: rgb(255 255 255 / 20%);
     text-align: center;
 }
 
