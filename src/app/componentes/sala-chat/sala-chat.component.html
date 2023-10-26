@@ -1,12 +1,14 @@
 <div id="sala-chat-container">
-    <div id="mensajes">
-        <div *ngFor="let mensaje of servMensaje.mensajes" name="mensaje-card" [class.mensaje-propio]="mensaje.nombre === servUsuario.usuarioActual.email">
+    <div id="mensajes" #mensajes_container>
+        <div *ngFor="let mensaje of mensajes" name="mensaje-card" [class.mensaje-propio]="mensaje.nombre === servUsuario.usuarioActual!.email">
             <div name="mensaje-autor">
-                {{mensaje.nombre | autorPropio: servUsuario.usuarioActual}}
+                {{mensaje.nombre | autorPropio: servUsuario.usuarioActual!}}
             </div>
+
             <div name="mensaje-texto">
                 {{mensaje.mensaje}}
             </div>
+            
             <div name="mensaje-fecha">
                 {{mensaje.fecha | date:'dd/MM/yyyy HH:mm'}}
             </div>

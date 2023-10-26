@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection, DocumentReference } from '@angular/fire/compat/firestore';
 import { Mensaje } from '../clases/mensaje';
 import { Observable } from 'rxjs';
 
@@ -12,7 +12,7 @@ export class MensajeService {
   mensajes: Mensaje[] = [];
 
   constructor(private db: AngularFirestore) {
-    this.getAll().subscribe(
+    /* this.getAll().subscribe(
       (msj: Mensaje[]) => {
         for (let x = 0; x < msj.length; x++) {
           msj[x].fecha = new Date((msj[x].fecha as any)['seconds'] * 1000);
@@ -21,7 +21,7 @@ export class MensajeService {
         this.mensajes = msj;
         //console.log(this.mensajes);
       }
-    );
+    ); */
 
   }
 
@@ -29,7 +29,7 @@ export class MensajeService {
     return this.mensajesRef.valueChanges();
   }
 
-  create(mensaje: Mensaje): any {
+  create(mensaje: Mensaje): Promise<DocumentReference<Mensaje>> {
     return this.mensajesRef.add({ ...mensaje });
   }
 
