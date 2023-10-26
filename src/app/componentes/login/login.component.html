@@ -13,16 +13,18 @@
             <label for="clave">Contraseña</label>
             <p-password id="clave" [(ngModel)]="clave" inputStyleClass="w-full" styleClass="w-full mb-1"
                 [feedback]="false" [toggleMask]="true"></p-password>
-            <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer"
+            <a class="font-medium no-underline ml-2 text-blue-400 text-right cursor-pointer"
                 (click)="OlvideClave()">¿Olvidaste tu contraseña?</a>
         </div>
 
         <div id="login_buttons_container">
+            <button pButton pRipple label="Iniciar sesión" icon="fas fa-sign-in-alt" class="p-button-success w-full"
+            (click)="Login()"></button>
+
+            <div class="mt-2">¿No estás registrado?</div>
+
             <button pButton pRipple label="Registrarme" icon="fa-solid fa-user-plus" class="p-button-secondary w-full"
                 (click)="Registrarme()"></button>
-
-            <button pButton pRipple label="Iniciar sesión" icon="fas fa-sign-in-alt" class="p-button-primary w-full"
-                (click)="Login()"></button>
         </div>
 
     </div>
@@ -33,7 +35,7 @@
         </div>
 
         <div *ngFor="let jugador of jugadoresMock">
-            <button pButton pRipple label="{{jugador.mail}}" class="p-button-help w-full"
+            <button pButton pRipple label="{{jugador.mail}}" class="p-button-primary w-full"
                 (click)="LoginMock(jugador.mail, jugador.clave)"></button>
         </div>
     </div>
