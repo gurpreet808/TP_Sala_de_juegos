@@ -8,7 +8,7 @@ import { Pais } from '../clases/pais';
 })
 export class PaisService {
   paises: Pais[] = [];
-  urlServidor = "https://restcountries.com/v3.1/all";
+  urlServidor = "https://restcountries.com/v3.1/region/america";
 
   constructor(public _miHttp: HttpClient) {
 

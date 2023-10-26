@@ -12,8 +12,11 @@ export class PreguntadosComponent implements OnInit {
 
   idPaisElegido: number = -1;
   opcionesPaises: number[] = [];
-  juegoFinalizado: boolean = false;
-  gano: boolean = false;
+  rondaFinalizada: boolean = false;
+  ganoRonda: boolean = false;
+  rondas: number = 10;
+  rondaActual: number = 0;
+  puntaje: number = 0;
 
   constructor(public servPaises: PaisService, public messageService: MessageService) {
   }
@@ -23,21 +26,34 @@ export class PreguntadosComponent implements OnInit {
   }
 
   async IniciarJuego() {
-    this.juegoFinalizado = false;
-    this.gano = false;
-    await this.servPaises.CargarPaises().then(
-      (paises: Pais[]) => {
-        this.ElegirPaisAleatorio();
-        this.ElegirOpcionesAleatorias(this.idPaisElegido);
+    this.rondaFinalizada = false;
+    this.ganoRonda = false;
+    this.rondaActual = 0;
+    this.puntaje = 0;
+    this.IniciarRonda();
+  }
 
-        //console.log(this.servPaises.paises[this.idPaisElegido]);
-        //console.log(this.opcionesPaises);
-      }
-    ).catch(
-      (error) => {
-        console.log(error);
-      }
-    );
+  async IniciarRonda(){
+    if (this.rondaActual < this.rondas) {
+      await this.servPaises.CargarPaises().then(
+        (paises: Pais[]) => {
+          this.ElegirPaisAleatorio();
+          this.ElegirOpcionesAleatorias(this.idPaisElegido);
+          this.rondaActual++;
+          this.rondaFinalizada = false;
+  
+          //console.log(this.servPaises.paises[this.idPaisElegido]);
+          //console.log(this.opcionesPaises);
+          console.log(this.rondaActual);
+        }
+      ).catch(
+        (error) => {
+          console.log(error);
+        }
+      );
+    } else {
+      throw new Error('No hay más rondas');
+    }
   }
 
   ElegirPaisAleatorio() {
@@ -60,14 +76,15 @@ export class PreguntadosComponent implements OnInit {
 
   ElegirOpcion(idPais: number) {
     if (idPais == this.idPaisElegido) {
-      this.gano = true;
-      this.messageService.add({ severity: 'success', summary: 'Correcto', detail: 'Ganaste' });
+      this.puntaje++;
+      this.ganoRonda = true;
+      this.messageService.add({ severity: 'success', summary: 'Correcto', detail: 'Acertaste!' });
     } else {
-      this.gano = false;
-      this.messageService.add({ severity: 'error', summary: 'Incorrecto', detail: 'Perdiste' });
+      this.ganoRonda = false;
+      this.messageService.add({ severity: 'error', summary: 'Incorrecto', detail: 'Fallaste!' });
     }
 
-    this.juegoFinalizado = true;
+    this.rondaFinalizada = true;
   }
 
   ReiniciarJuego() {
