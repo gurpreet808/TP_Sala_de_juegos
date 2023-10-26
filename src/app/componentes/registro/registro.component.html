@@ -1,9 +1,9 @@
 <div id="registrarme_container">
-    <div id="registrarme_title_container">
-        <h1>Registrarme</h1>
-    </div>
+    <div id="registrarme_form_container" name="form_card">
+        <div id="registrarme_title_container" name="form_card_title">
+            <div>Registrarme</div>
+        </div>
 
-    <div id="registrarme_form_container">
         <div id="registrarme_email_container" name="registrarme_form_input">
             <label for="email">E-Mail</label>
             <input id="email" [(ngModel)]="email" type="text" pInputText class="w-full">
@@ -22,10 +22,13 @@
         </div>
 
         <div id="registrarme_buttons_container">
-            <button pButton pRipple label="Iniciar sesión" icon="fas fa-sign-in-alt" class="p-button-secondary w-full"
-                (click)="Login()"></button>
             <button pButton pRipple label="Registrarme" icon="fa-solid fa-user-plus" class="p-button-primary w-full"
-                (click)="Registrarme()"></button>
+            (click)="Registrarme()"></button>
+            
+            <div class="mt-2">¿Ya tienes una cuenta?</div>
+
+            <button pButton pRipple label="Iniciar sesión" icon="fas fa-sign-in-alt" class="p-button-secondary w-full"
+            (click)="Login()"></button>
         </div>
 
     </div>

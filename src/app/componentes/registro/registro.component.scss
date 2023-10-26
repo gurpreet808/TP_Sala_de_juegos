@@ -1,5 +1,13 @@
 div#registrarme_container {
-    background-color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+div[name="form_card"]{
+    background-color: rgb(255 255 255 / 20%);
     border: 1px solid #ccc;
     padding: 20px;
     border-radius: 10px;
@@ -17,8 +25,10 @@ div#registrarme_form_container {
     gap: 1rem;
 }
 
-div#registrarme_title_container {
+div[name="form_card_title"] {
     text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 div[name="registrarme_form_input"]>label {
