@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 
@@ -7,18 +7,16 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   nom_usuario: string = '';
 
-  constructor(public servUsuario: UsuarioService, private router: Router) {
-    this.logueado();
+  constructor(public servUsuario: UsuarioService) {
   }
 
-  async logueado() {
-    if (this.servUsuario.logueado.value == false) {
-      this.router.navigate(['/login']);
-    } else {
-      this.nom_usuario = " " + this.servUsuario.usuarioActual.email;
+  ngOnInit(): void {
+    if (this.servUsuario.usuarioActual) {
+      this.nom_usuario = this.servUsuario.usuarioActual.email;
     }
   }
+
 }

@@ -19,14 +19,16 @@ export class SalaChatComponent {
   };
 
   constructor(public servMensaje: MensajeService, public servUsuario: UsuarioService) {
-    
+
   }
 
   enviarMensaje() {
-    this.mensaje.fecha = new Date();
-    this.mensaje.nombre = this.servUsuario.usuarioActual.email;
-    this.servMensaje.create(this.mensaje);
-    this.mensaje.mensaje = '';
+    if (this.servUsuario.usuarioActual) {
+      this.mensaje.fecha = new Date();
+      this.mensaje.nombre = this.servUsuario.usuarioActual.email;
+      this.servMensaje.create(this.mensaje);
+      this.mensaje.mensaje = '';
+    }
   }
 
 }

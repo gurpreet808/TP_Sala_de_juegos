@@ -24,14 +24,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.logueado();
-  }
-
-  async logueado() {
-    await this.servUsuario.waitForAuthState();
-    if (this.servUsuario.logueado.value == true) {
-      this.router.navigate(['/']);
-    }
   }
 
   Login() {

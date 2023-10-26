@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from './servicios/usuario.service';
 
 @Component({
@@ -6,10 +6,12 @@ import { UsuarioService } from './servicios/usuario.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'TP_Sala_de_juegos';
+  appReady: boolean = false;
 
-  constructor(public servUsuario: UsuarioService){
-    
+  constructor(public servUsuario: UsuarioService) {
   }
+
+  ngOnInit(): void { }
 }

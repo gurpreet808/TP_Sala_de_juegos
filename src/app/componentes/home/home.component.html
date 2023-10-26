@@ -1,5 +1,11 @@
 <div id="home_container">
-    <div id="home_title">
-        ¡Bienvenido{{nom_usuario}}!
+    <div id="logueado_container" *ngIf="servUsuario.logueado.value">
+        <div id="saludo" *ngIf="servUsuario.usuarioActual">
+            ¡Bienvenido{{" " + servUsuario.usuarioActual.email}}!
+        </div>
+    </div>
+
+    <div id="sin_loguear_container" *ngIf="servUsuario.logueado.value == false && servUsuario.firstRun == false">
+        <app-login></app-login>
     </div>
 </div>

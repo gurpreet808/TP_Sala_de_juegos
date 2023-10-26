@@ -1,22 +1,26 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, User, UserCredential, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Usuario } from '../clases/usuario';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, first, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  logueado: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  usuarioActual: Usuario = new Usuario("", "");
+  logueado: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.auth.currentUser ? true : false);
+  usuarioActual: Usuario | undefined;
+  firstRun: boolean = true;
 
   constructor(private auth: Auth) {
     this.auth.onAuthStateChanged(
-      (user) => {
-        if (user) {
+      (user: User | null) => {
+        //console.log(user);
+        this.firstRun = false;
+
+        if (user != null) {
+          this.setDatosUsuario(user);
           this.logueado.next(true);
-          this.usuarioActual = new Usuario("", user.email ?? "nomail");
         } else {
           this.logueado.next(false);
         }
@@ -24,18 +28,14 @@ export class UsuarioService {
     );
   }
 
-  async waitForAuthState(): Promise<boolean> {
-    return new Promise<boolean>(
-      (resolve) => {
-        this.logueado.subscribe(
-          (isLoggedIn: boolean) => {
-            if (isLoggedIn) {
-              resolve(true);
-            }
-          }
-        );
-      }
-    );
+  setDatosUsuario(datos: any) {
+    this.usuarioActual = {
+      id: datos.uid,
+      email: datos.email || '',
+      nombre: datos.displayName || ''
+    };
+
+    //console.log(this.usuarioActual);
   }
 
   async LogInEmail(email: string, password: string) {
@@ -59,7 +59,7 @@ export class UsuarioService {
 
   async RegistrarEmail(email: string, password: string) {
     await createUserWithEmailAndPassword(this.auth, email, password).then(
-      (datos) => {
+      (datos: UserCredential) => {
         //console.log(datos);
         return Promise.resolve(datos);
       }
@@ -112,5 +112,4 @@ export class UsuarioService {
         return `Error desconocido. (${error})`;
     }
   }
-
 }

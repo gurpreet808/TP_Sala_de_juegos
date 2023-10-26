@@ -10,18 +10,20 @@ import { AhorcadoComponent } from './componentes/ahorcado/ahorcado.component';
 import { MayorMenorComponent } from './componentes/mayor-menor/mayor-menor.component';
 import { PreguntadosComponent } from './componentes/preguntados/preguntados.component';
 import { ColorRaceComponent } from './componentes/color-race/color-race.component';
+import { anonGuard } from './guards/anon.guard';
+import { userGuard } from './guards/user.guard';
 
 const routes: Routes = [
   //{ path: "", redirectTo: "/bienvenido", pathMatch: "full" },
-  { path: "", component: HomeComponent },
-  { path: "login", component: LoginComponent },
-  { path: "registro", component: RegistroComponent },
+  { path: "", component: HomeComponent},
+  { path: "login", component: LoginComponent, canActivate: [anonGuard] },
+  { path: "registro", component: RegistroComponent, canActivate: [anonGuard] },
   { path: "quien-soy", component: QuienSoyComponent },
-  { path: "sala-chat", component: SalaChatComponent },
-  { path: "ahorcado", component: AhorcadoComponent },
-  { path: "mayor-menor", component: MayorMenorComponent },
-  { path: "preguntados", component: PreguntadosComponent },
-  { path: "color-race", component: ColorRaceComponent },
+  { path: "sala-chat", component: SalaChatComponent, canActivate: [userGuard] },
+  { path: "ahorcado", component: AhorcadoComponent, canActivate: [userGuard] },
+  { path: "mayor-menor", component: MayorMenorComponent, canActivate: [userGuard] },
+  { path: "preguntados", component: PreguntadosComponent, canActivate: [userGuard] },
+  { path: "color-race", component: ColorRaceComponent, canActivate: [userGuard] },
   { path: "**", component: Error404Component }
 ];
 

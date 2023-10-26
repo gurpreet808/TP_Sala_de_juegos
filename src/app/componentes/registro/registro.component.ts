@@ -18,14 +18,6 @@ export class RegistroComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.logueado();
-  }
-
-  async logueado() {
-    await this.servUsuario.waitForAuthState();
-    if (this.servUsuario.logueado.value) {
-      this.router.navigate(['/']);
-    }
   }
 
   Registrarme() {
@@ -48,7 +40,6 @@ export class RegistroComponent implements OnInit {
         this.messageService.add({ severity: 'error', life: 10000, summary: 'Error', detail: err.message });
       }
     );
-
   }
 
   Login() {
